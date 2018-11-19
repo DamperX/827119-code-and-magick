@@ -7,7 +7,7 @@ var CLOUD_Y = 50;
 var GAP = 50;
 var BAR_WIDTH = 40;
 var HISTOGRAM_HEIGTH = 150;
-var lineHeight = 20;
+var LINE_HEIGHT = 20;
 
 var getMaxElement = function (arr) {
   var maxElement = arr[0];
@@ -32,14 +32,14 @@ var getPlayerColor = function (player) {
 
 
 var renderColumn = function (ctx, name, time, x, y, height, finalYPoint) {
-    ctx.fillStyle = getPlayerColor(name);
-    ctx.fillRect(x, y, BAR_WIDTH, height);
-    ctx.fillStyle = '#000';
-    ctx.textBaseline = 'top';
-    ctx.fillText(name, x, finalYPoint);
-    ctx.textBaseline = 'bottom';
-    ctx.fillText(Math.round(time), x, y);
-}
+  ctx.fillStyle = getPlayerColor(name);
+  ctx.fillRect(x, y, BAR_WIDTH, height);
+  ctx.fillStyle = '#000';
+  ctx.textBaseline = 'top';
+  ctx.fillText(name, x, finalYPoint);
+  ctx.textBaseline = 'bottom';
+  ctx.fillText(Math.round(time), x, y);
+};
 
 window.renderStatistics = function (ctx, names, times) {
   ctx.fillStyle = 'rgba(0, 0, 0, 0.7)';
@@ -56,7 +56,7 @@ window.renderStatistics = function (ctx, names, times) {
   for (var i = 0; i < names.length; i++) {
     var rectX = CLOUD_X + GAP + (GAP + BAR_WIDTH) * i;
     var rectHeight = (HISTOGRAM_HEIGTH * times[i]) / maxTime;
-    var finalYPoint = CLOUD_Y + lineHeight * 3 + HISTOGRAM_HEIGTH;
+    var finalYPoint = CLOUD_Y + LINE_HEIGHT * 3 + HISTOGRAM_HEIGTH;
     var rectY = finalYPoint - rectHeight;
 
     renderColumn(ctx, names[i], times[i], rectX, rectY, rectHeight, finalYPoint);
