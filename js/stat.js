@@ -17,10 +17,31 @@ window.renderStatistics = function(ctx, names, times) {
   ctx.strokeText('Ура вы победили!', 120, 40);
   ctx.strokeText('Список результатов:', 120, 60);
 
-  ctx.fillStyle = 'rgba(255, 0, 0, 1)';
+var getMaxElement = function(arr) {
+  var maxElement = arr[0];
+
+  for (var i = 1; i < arr.length; i++) {
+    if (arr[i] > maxElement) {
+      maxElement = arr[i];
+    }
+  }
+
+  return maxElement;
+};
+
+var getPlayerColor = function(player) {
+  if (player === 'Вы') {
+    return 'rgba(255, 0, 0, 1)';
+  } else {
+    return 'rgb(0, 0, 255)';
+  }
+};
+
+  var maxTime = getMaxElement(times);
 
   for (var i = 0; i < names.length; i++) {
+    ctx.fillStyle = getPlayerColor(names[i]);
     ctx.fillText(names[i], CLOUD_X + GAP + (GAP + BAR_WIDTH) * i, CLOUD_Y + GAP);
-    ctx.fillRect(CLOUD_X + GAP + (GAP + BAR_WIDTH) * i, CLOUD_Y + GAP, BAR_WIDTH, HISTOGRAM_HEIGTH);
+    ctx.fillRect(CLOUD_X + GAP + (GAP + BAR_WIDTH) * i, CLOUD_Y + GAP, BAR_WIDTH, (HISTOGRAM_HEIGTH * times[i]) / maxTime);
   }
 };
