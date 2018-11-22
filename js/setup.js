@@ -10,8 +10,6 @@ var coatColors = ['rgb(101, 137, 164)', 'rgb(241, 43, 107)', 'rgb(146, 100, 161)
 
 var eyesColors = ['black', 'red', 'blue', 'yellow', 'green'];
 
-var wizardAmount = 4;
-
 var similarListElement = userDialog.querySelector('.setup-similar-list');
 var similarWizardTemplate = document.querySelector('#similar-wizard-template')
   .content
@@ -22,36 +20,30 @@ var getRandomElementFromArray = function (array) {
   return array[random];
 };
 
-var wizardName = getRandomElementFromArray(nickName) + ' ' + getRandomElementFromArray(surName);
-
-var wizardCoat = getRandomElementFromArray(coatColors);
-
-var wizardEyes = getRandomElementFromArray(eyesColors);
-
 var wizards = [
   {
-    name: wizardName,
-    coatColor: wizardCoat,
-    eyesColor: wizardEyes
+    name: getRandomElementFromArray(nickName) + ' ' + getRandomElementFromArray(surName),
+    coatColor: getRandomElementFromArray(coatColors),
+    eyesColor: getRandomElementFromArray(eyesColors)
   },
   {
-    name: wizardName,
-    coatColor: wizardCoat,
-    eyesColor: wizardEyes
+    name: getRandomElementFromArray(nickName) + ' ' + getRandomElementFromArray(surName),
+    coatColor: getRandomElementFromArray(coatColors),
+    eyesColor: getRandomElementFromArray(eyesColors)
   },
   {
-    name: wizardName,
-    coatColor: wizardCoat,
-    eyesColor: wizardEyes
+    name: getRandomElementFromArray(nickName) + ' ' + getRandomElementFromArray(surName),
+    coatColor: getRandomElementFromArray(coatColors),
+    eyesColor: getRandomElementFromArray(eyesColors)
   },
   {
-    name: wizardName,
-    coatColor: wizardCoat,
-    eyesColor: wizardEyes
+    name: getRandomElementFromArray(nickName) + ' ' + getRandomElementFromArray(surName),
+    coatColor: getRandomElementFromArray(coatColors),
+    eyesColor: getRandomElementFromArray(eyesColors)
   },
 ];
 
-var renderWizard = function (wizard) {
+var renderWizard = function () {
   var wizardElement = similarWizardTemplate.cloneNode(true);
 
   wizardElement.querySelector('.setup-similar-label').textContent = wizards[i].name;
@@ -59,7 +51,7 @@ var renderWizard = function (wizard) {
   wizardElement.querySelector('.wizard-eyes').style.fill = wizards[i].eyesColor;
 
   return wizardElement;
-}
+};
 
 var fragment = document.createDocumentFragment();
 for (var i = 0; i < wizards.length; i++) {
