@@ -16,15 +16,14 @@ var wizards = [];
 
 var similarListElement = userDialog.querySelector('.setup-similar-list');
 
-var similarWizardTemplate = document.querySelector('#similar-wizard-template')
-  .content.querySelector('.setup-similar-item');
+var similarWizardTemplate = document.querySelector('#similar-wizard-template').content.querySelector('.setup-similar-item');
 
 var getRandomElementFromArray = function (array) {
   var random = Math.floor(Math.random() * array.length);
   return array[random];
 };
 
-var createRandomWizard = function () {
+var createRandomWizards = function () {
   for (var i = 0; i < wizardsCount; i++) {
     wizards[i] = {
       name: getRandomElementFromArray(nickName) + ' ' + getRandomElementFromArray(surName),
@@ -55,5 +54,5 @@ var getNewWizard = function () {
 
 document.querySelector('.setup-similar').classList.remove('hidden');
 
-createRandomWizard();
+createRandomWizards();
 getNewWizard();
